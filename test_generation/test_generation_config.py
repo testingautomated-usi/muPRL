@@ -1,0 +1,8 @@
+DNN_POLICIES = ["mlp"]
+
+CLASSIFIER_LAYERS = [1, 2, 3, 4]
+TESTING_POLICIES_FOR_TRAINING = [*DNN_POLICIES]
+TESTING_STRATEGIES = ["prioritized_replay", "random", "nn"]
+
+# NN parameters
+SAMPLING_SIZE = 1000

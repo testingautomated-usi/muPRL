@@ -1,0 +1,29 @@
+FROM python:3.8-slim
+
+RUN apt update \
+    && apt upgrade -y \
+    && apt install -y freeglut3-dev
+
+# # Install Python packages
+COPY requirements.txt /tmp/requirements.txt
+COPY requirements_torch_cpu.txt /tmp/requirements_torch_cpu.txt
+COPY requirements_nvidia.txt /tmp/requirements_nvidia.txt
+
+RUN echo "Installing requirements" \
+    && pip install setuptools==65.5.0 "wheel<0.40.0" \
+    && pip install -r /tmp/requirements_torch_cpu.txt \
+    && pip install -r /tmp/requirements.txt \
+    && pip install -r /tmp/requirements_nvidia.txt \
+    && pip install gym==0.25.0
+
+RUN echo "Installing jax cuda" \
+    && pip uninstall -y jax \
+    && pip uninstall -y jaxlib \
+    && pip install --upgrade "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+
+RUN rm /tmp/requirements.txt \
+    && rm /tmp/requirements_torch_cpu.txt \
+    && rm /tmp/requirements_nvidia.txt
+
+ENTRYPOINT [ "/bin/bash" ]
+ 

@@ -1,0 +1,6 @@
+{
+    "name": "muprl - CPU",
+    "build": {
+        "dockerfile": "../../Dockerfile"
+    }
+}

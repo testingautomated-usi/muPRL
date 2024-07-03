@@ -1,0 +1,7 @@
+{
+    "name": "muprl - GPU",
+    "build": {
+        "dockerfile": "../../Dockerfile"
+    },
+    "runArgs": ["--gpus", "all"]
+}
