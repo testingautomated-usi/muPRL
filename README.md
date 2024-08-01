@@ -5,7 +5,7 @@
 ```commandline
 
 docker build -t muprl:latest .
-docker run --gpus all -it --rm --mount type=bind,source="$(pwd)",target=/home/muPRL --workdir /home/muPRL --name muPRL-container muprl:latest
+docker run --gpus all -it -u ${UID} --rm --mount type=bind,source="$(pwd)",target=/home/muPRL --workdir /home/muPRL --name muPRL-container muprl:latest
 
 ```
 
