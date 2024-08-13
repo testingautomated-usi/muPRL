@@ -1,6 +1,7 @@
 {
     "name": "muprl - CPU",
     "build": {
-        "dockerfile": "../../Dockerfile"
-    }
+        "dockerfile": "../../Dockerfile_CPU"
+    },
+    "runArgs": ["--rm"]
 }

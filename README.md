@@ -2,23 +2,34 @@
 
 ## 1.1 Build the docker container
 
+If you do not have an NVIDIA GPU type:
+
 ```commandline
 
-docker build -t muprl:latest .
+docker build -f Dockerfile_CPU -t muprl:latest .
+docker run -it -u ${UID} --rm --mount type=bind,source="$(pwd)",target=/home/muPRL --workdir /home/muPRL --name muPRL-container muprl:latest
+
+```
+
+The image size should be around 2.6 GB.
+
+If you have an NVIDIA GPU, make sure to install the [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) and type:
+
+```commandline
+
+docker build -f Dockerfile_GPU -t muprl:latest .
 docker run --gpus all -it -u ${UID} --rm --mount type=bind,source="$(pwd)",target=/home/muPRL --workdir /home/muPRL --name muPRL-container muprl:latest
 
 ```
 
-Remove the `--gpus all` argument if your machine does not have an Nvidia GPU (make sure to install the [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) if your machine has an Nvidia GPU).
-
-The image size is ~8 GB.
+The image size should be around 8 GB.
 
 ## 1.2 (Optional): Use VSCode Devcontainer instead of step 1.1
 
 - Download [VSCode](https://code.visualstudio.com/Download) for your platform;
 - Install DevContainer Extension;
 - In VSCode, use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS) to run the "Dev Containers: Open Folder in Container..." command;
-- You will be prompted with two options: CPU dev container or CUDA dev container. Choose the one you want to run.
+- You will be prompted with two options: CPU dev container or GPU dev container. Choose the one you want to run.
 
 # 2. Mutation testing pipeline
 
