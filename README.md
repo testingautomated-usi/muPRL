@@ -1,6 +1,28 @@
 # 1. Setting up the environment
 
-## 1.1 Build the docker container
+## 1.1 Download the docker image
+
+If you do not have an NVIDIA GPU type:
+
+```commandline
+
+docker run -it -u ${UID} --rm --mount type=bind,source="$(pwd)",target=/home/muPRL --workdir /home/muPRL --name muPRL-container dockercontainervm/muprl-cpu:0.1.0
+
+```
+
+The command will download the container image `dockercontainervm/muprl-cpu:0.1.0` that should be around 2.6 GB.
+
+If you have an NVIDIA GPU, make sure to install the [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) and type:
+
+```commandline
+
+docker run --gpus all -it -u ${UID} --rm --mount type=bind,source="$(pwd)",target=/home/muPRL --workdir /home/muPRL --name muPRL-container dockercontainervm/muprl-gpu:0.1.0
+
+```
+
+The command will download the container image `dockercontainervm/muprl-gpu:0.1.0` that should be around * GB.
+
+## 1.2 (Optional): Build the docker container instead of step 1.1
 
 If you do not have an NVIDIA GPU type:
 
@@ -24,7 +46,7 @@ docker run --gpus all -it -u ${UID} --rm --mount type=bind,source="$(pwd)",targe
 
 The image size should be around 8 GB.
 
-## 1.2 (Optional): Use VSCode Devcontainer instead of step 1.1
+## 1.3 (Optional): Use VSCode Devcontainer instead of step 1.1
 
 - Download [VSCode](https://code.visualstudio.com/Download) for your platform;
 - Install DevContainer Extension;

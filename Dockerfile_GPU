@@ -17,6 +17,7 @@ RUN echo "Installing requirements" \
     && pip install gym==0.25.0
 
 RUN echo "Installing jax cuda" \
+    && pip install --upgrade pip \
     && pip uninstall -y jax \
     && pip uninstall -y jaxlib \
     && pip install --upgrade "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html

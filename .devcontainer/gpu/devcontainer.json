@@ -1,7 +1,4 @@
 {
     "name": "muprl - GPU",
-    "build": {
-        "dockerfile": "../../Dockerfile_GPU"
-    },
-    "runArgs": ["--rm", "--gpus", "all"]
+    "image": "dockercontainervm/muprl-gpu:0.1.0"
 }
