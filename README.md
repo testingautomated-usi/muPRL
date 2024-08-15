@@ -20,7 +20,7 @@ docker run --gpus all -it -u ${UID} --rm --mount type=bind,source="$(pwd)",targe
 
 ```
 
-The command will download the container image `dockercontainervm/muprl-gpu:0.1.0` that should be around * GB.
+The command will download the container image `dockercontainervm/muprl-gpu:0.1.0` that should be around 8 GB.
 
 ## 1.2 (Optional): Build the docker container instead of step 1.1
 
