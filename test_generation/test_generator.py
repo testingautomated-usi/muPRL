@@ -279,30 +279,6 @@ class TestGenerator:
         max_env_config = env_configurations[max_prediction_idx]
         max_prediction = predictions[max_prediction_idx]
 
-        # FIXME: archive implementation to diversify solutions; it does not work better than
-        # simply going greedy with the best solution
-        # if len(self.archive) > 0:
-        #     indices_sorted_by_predictions = np.argsort(predictions)[::-1]
-        #     min_distances = []
-        #     for index_sorted_by_prediction in indices_sorted_by_predictions[1:]:
-        #         env_config = env_configurations[index_sorted_by_prediction]
-        #         prediction = predictions[index_sorted_by_prediction]
-        #         percentage_prediction_decrease = 100 * (max_prediction - prediction) / max_prediction
-        #         if percentage_prediction_decrease > 3:
-        #             break
-        #         distances = [env_config.compute_distance(other=archive_solution) for archive_solution in self.archive]
-        #         min_distance = min(distances)
-        #         min_distances.append(min_distance)
-
-        #     if len(min_distances) > 0:
-        #         index_max_min_distance = np.argmax(min_distances)
-        #         self.logger.info(f"Max min distance: {min_distances[index_max_min_distance]}")
-        #         index_selected_env_config = indices_sorted_by_predictions[index_max_min_distance]
-        #         max_env_config = env_configurations[index_selected_env_config]
-        #         max_prediction = predictions[index_selected_env_config]
-
-        # self.archive.append(max_env_config)
-
         self.current_env_config = max_env_config
         self.logger.info(
             "Env configuration: {}; max prediction: {}, # samples: {}".format(
@@ -473,7 +449,7 @@ class TestGenerator:
                             sampling_size=self.sampling_size,
                         )
 
-                        if type(res) == tuple:
+                        if isinstance(res, tuple):
                             env_config = res[0]
                         else:
                             env_config = res
