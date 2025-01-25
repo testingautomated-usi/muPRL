@@ -20,7 +20,7 @@ docker run --gpus all -it -u ${UID} --rm --mount type=bind,source="$(pwd)",targe
 
 ```
 
-The command will download the container image `dockercontainervm/muprl-gpu:0.1.0` that should be around * GB.
+The command will download the container image `dockercontainervm/muprl-gpu:0.1.0` that should be around 8 GB.
 
 ## 1.2 (Optional): Build the docker container instead of step 1.1
 
@@ -55,7 +55,7 @@ The image size should be around 8 GB.
 
 # 2. Mutation testing pipeline
 
-An example with the CartPole environment (the testing machine has a QUADRO GPU with 8GB of memory). For simplicity, we only execute one run (instead of ten) and sample three mutant configurations (instead of five):
+An example with the CartPole environment (the testing machine has a QUADRO GPU with 8GB of memory). For simplicity, we only execute five runs (instead of ten) and sample three mutant configurations (instead of five):
 
 # 2.1 Train original model
 
@@ -143,7 +143,11 @@ python evaluate.py --env CartPole-v1 --algo ppo --triv 1 --ms 1 --sens 1 --num-r
 
 ```
 
-The logs are written into `./mutation_analysis_results/ppo/CartPole-v1`. In the `sensitivity_weak_strong_weaker.csv` file, we report the mutation scores of `weaker` and `strong` test generators (the mutation score of the `weak` test generator is only used as a reference). In this case we have that the mutation score of the `weaker` test generator is `0.4`, while the mutation score of the `strong` test generator is `0.6`; hence the sensitivity is `0.333` as shown in the last row.
+The logs are written into `./mutation_analysis_results/ppo/CartPole-v1`. In the `sensitivity_weaker_strong.csv` file, we report the mutation scores of `weaker` and `strong` test generators. In this case we have that the mutation score of the `weaker` test generator is `0.4`, while the mutation score of the `strong` test generator is `0.6`; hence the sensitivity is `0.333` as shown in the last row.
+
+# 2.7 Script
+
+The complete script to replicate the CartPole results is [here](train_and_test.sh). The whole process on a Quadro GPU with 8GB of memory and with parallelization `true` takes around 120 minutes.
 
 # 3. Mutation operators implemented in muPRL
 

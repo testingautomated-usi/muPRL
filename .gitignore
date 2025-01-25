@@ -121,3 +121,5 @@ nohup.out
 nohup.err
 *_errors.txt
 *_logs.txt
+logs_*.txt
+errors_*.txt

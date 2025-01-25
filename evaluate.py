@@ -197,7 +197,7 @@ def calculate_mutation_score(
     env,
     num_runs,
     threshold_failure,
-    bootstrap
+    bootstrap,
 ):
     if len(killable_operators) != 0:
         get_raw_results = False
@@ -269,7 +269,7 @@ def calculate_mutation_score(
                                 num_runs,
                                 original_results[0],
                                 mutant_results[0],
-                                bootstrap
+                                bootstrap,
                             )
                         )
                         killable_confs.append(int(is_conf_killable))
@@ -340,6 +340,9 @@ def calculate_mutation_score(
                 sensitivity = round(
                     (mut_scores_sensitivity[1] - mut_scores_sensitivity[0]) / max_score,
                     3,
+                )
+                print(
+                    f"{mut_scores_sensitivity[0]} vs {mut_scores_sensitivity[1]}, sensitivity: {sensitivity}"
                 )
 
             sensitivity_report.append(["sensitivity", sensitivity])
@@ -429,12 +432,12 @@ if __name__ == "__main__":
         calculate_mutation_score(
             killable_operators,
             triviality_report,
-            ["weak", "strong", "weaker"],
+            ["weaker", "strong"],
             args.do_sensitivity,
             subj_path,
             args.algo,
             args.env,
             args.num_runs,
             args.threshold_failure,
-            args.bootstrap
+            args.bootstrap,
         )
