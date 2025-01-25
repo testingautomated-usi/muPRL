@@ -180,3 +180,33 @@ The complete script to replicate the CartPole results is [here](train_and_test.s
 # 4. Trained agents
 
 We share the agents for each environment as well as the associated killable and non-trivial mutants with the results mutation analysis. The data are on [Figshare](https://figshare.com/s/1557e75b984951bc7778).
+
+## 5. Citing the Project
+
+To cite this repository in publications:
+
+```bibtex
+@article{DBLP:journals/corr/abs-2408-15150,
+  author       = {Deepak{-}George Thomas and
+                  Matteo Biagiola and
+                  Nargiz Humbatova and
+                  Mohammad Wardat and
+                  Gunel Jahangirova and
+                  Hridesh Rajan and
+                  Paolo Tonella},
+  title        = {muPRL: {A} Mutation Testing Pipeline for Deep Reinforcement Learning
+                  based on Real Faults},
+  journal      = {CoRR},
+  volume       = {abs/2408.15150},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2408.15150},
+  doi          = {10.48550/ARXIV.2408.15150},
+  eprinttype    = {arXiv},
+  eprint       = {2408.15150},
+  timestamp    = {Mon, 30 Sep 2024 21:31:24 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2408-15150.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+```
+The paper has been recently accepted at [ICSE 2025](https://conf.researchr.org/track/icse-2025/icse-2025-research-track#Accepted-papers-First-and-Second-Cycle). We will update the citation once the paper will be published in the proceedings.
+
