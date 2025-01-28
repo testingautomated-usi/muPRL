@@ -179,7 +179,7 @@ The complete script to replicate the CartPole results is [here](train_and_test.s
 
 # 4. Trained agents
 
-We share the agents for each environment as well as the associated killable and non-trivial mutants with the results mutation analysis. The data are on [Figshare](https://figshare.com/s/1557e75b984951bc7778).
+We share the agents for each environment as well as the associated killable and non-trivial mutants with the results mutation analysis. The data are on [Figshare](https://figshare.com/s/933cbcd8681c00e0ff21).
 
 ## 5. Citing the Project
 
